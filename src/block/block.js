@@ -11,6 +11,14 @@ import './editor.scss';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
+const { InnerBlocks } = wp.editor;
+
+// https://github.com/WordPress/gutenberg/tree/master/packages/editor/src/components/inner-blocks#template
+const TEMPLATE = [
+  [ 'core/paragraph', { placeholder: 'Enter side content...' }, [] ],
+  [ 'core/button', { text: 'Make this Recipe' }],
+  [ 'core/paragraph', { placeholder: 'Enter sidddde content...' }, [] ]
+];
 
 /**
  * Register: aa Gutenberg Block.
@@ -46,21 +54,12 @@ registerBlockType( 'cgb/block-embl-grid', {
 	 */
 	edit: function( props ) {
 		// Creates a <p class='wp-block-cgb-block-embl-grid'></p>.
+    props.className += ' embl-grid';
+    const { className } = props;
 		return (
-			<div className={ props.className }>
-				<p>— Hello from the backend.</p>
-				<p>
-					CGB BLOCK: <code>embl-grid</code> is a new Gutenberg block
-				</p>
-				<p>
-					It was created via
-					<code>
-						<a href="https://github.com/ahmadawais/create-guten-block">
-							create-guten-block
-						</a>
-					</code>.
-				</p>
-			</div>
+      <div className="{ className }">
+        <InnerBlocks template={ TEMPLATE }   templateLock="false" />
+      </div>
 		);
 	},
 
@@ -74,20 +73,9 @@ registerBlockType( 'cgb/block-embl-grid', {
 	 */
 	save: function( props ) {
 		return (
-			<div>
-				<p>— Hello from the frontend.</p>
-				<p>
-					CGB BLOCK: <code>embl-grid</code> is a new Gutenberg block.
-				</p>
-				<p>
-					It was created via{ ' ' }
-					<code>
-						<a href="https://github.com/ahmadawais/create-guten-block">
-							create-guten-block
-						</a>
-					</code>.
-				</p>
-			</div>
+      <div className="embl-grid">
+        <InnerBlocks.Content />
+      </div>
 		);
 	},
 } );
