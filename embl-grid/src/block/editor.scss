@@ -1,0 +1,23 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+//
+.wp-block-cgb-block-embl-grid  {
+  border: 0.2rem solid black;
+
+  > .editor-inner-blocks > .editor-block-list__layout {
+    display: grid;
+    grid-column: main;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    .editor-block-list__block-edit,
+    .editor-block-list__block {
+      padding: 0;
+      margin: 0;
+    }
+
+
+  }
+}
