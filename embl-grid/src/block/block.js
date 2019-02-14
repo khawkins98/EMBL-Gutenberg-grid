@@ -5,6 +5,9 @@
  * Simple block, renders and saves the same content without any interactivity.
  */
 
+// npm dependencies
+import classnames from 'classnames'; // Import NPM libraries here.
+
 //  Import CSS.
 import './style.scss';
 import './editor.scss';
@@ -13,6 +16,7 @@ const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const { InnerBlocks } = wp.editor;
 const { createHigherOrderComponent } = wp.compose;
+const { Panel, PanelBody, PanelRow, SelectControl } = wp.components;
 
 const withCustomClassName = createHigherOrderComponent( ( BlockEdit ) => {
   return ( props ) => {
@@ -51,13 +55,19 @@ const ALLOWED_BLOCKS = [
 registerBlockType( 'cgb/block-embl-grid', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'EMBL Grid Container' ), // Block title.
-	icon: 'shield', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+	icon: 'layout', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'embl-grid — CGB Block' ),
 		__( 'CGB Example' ),
 		__( 'create-guten-block' ),
 	],
+  // https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/block-attributes/
+  attributes: {
+    gridType: {
+      type: 'string',
+    }
+  },
 
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -71,9 +81,43 @@ registerBlockType( 'cgb/block-embl-grid', {
     // <InnerBlocks template={ TEMPLATE }   templateLock="false" />
 		// Creates a <p class='wp-block-cgb-block-embl-grid'></p>.
     // props.className += ' embl-grid';
+    const setGridType = value => props.setAttributes( { gridType: value } );
     const { className } = props;
 		return (
       <div className={ className }>
+        <Panel header="EMBL Grid row">
+            <PanelBody
+                title="Settings"
+                icon="welcome-widgets-menus"
+                initialOpen={ true }
+            >
+              <PanelRow>
+                  <div>
+                  Not sure which grid type? <a href="https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/detail/embl-grid.html" target="_blank">See the docs</a>.
+                  <SelectControl
+                      key="grid-type"
+                      label={ __( 'Grid Type' ) }
+                      value={ props.attributes.gridType ? props.attributes.gridType : '' }
+                      options={ [
+                          {
+                              label: __( 'Default' ),
+                              value: '',
+                          },
+                          {
+                              label: __( 'With sidebar' ),
+                              value: 'embl-grid--has-sidebar',
+                          },
+                          {
+                              label: __( 'Centred content' ),
+                              value: 'embl-grid--has-centered-content',
+                          },
+                      ] }
+                      onChange={ setGridType }
+                  />
+                  </div>
+              </PanelRow>
+            </PanelBody>
+        </Panel>
         <InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
       </div>
 		);
@@ -88,8 +132,9 @@ registerBlockType( 'cgb/block-embl-grid', {
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
 	 */
 	save: function( props ) {
+    // console.log(props.attributes.gridType)
 		return (
-      <div className="wp-block-cgb-block-embl-grid embl-grid">
+      <div className={ classnames('wp-block-cgb-block-embl-grid embl-grid', props.attributes.gridType ) }>
         <InnerBlocks.Content />
       </div>
 		);
