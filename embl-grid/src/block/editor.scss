@@ -8,6 +8,9 @@
 .wp-block-cgb-block-embl-grid  {
   border: 0.2rem solid black;
 
+
+
+
   > .editor-inner-blocks > .editor-block-list__layout {
     display: grid;
     grid-column: main;
@@ -17,6 +20,11 @@
       padding: 0;
       margin: 0;
     }
+
+    .editor-block-mover.is-visible {
+     transform: rotate(-90deg);
+     left: 10px;
+   }
 
 
   }

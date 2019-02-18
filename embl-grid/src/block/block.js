@@ -87,13 +87,13 @@ registerBlockType( 'cgb/block-embl-grid', {
       <div className={ className }>
         <Panel header="EMBL Grid row">
             <PanelBody
-                title="Settings"
+                title="Choose a grid type"
                 icon="welcome-widgets-menus"
-                initialOpen={ true }
+                initialOpen={ false }
             >
               <PanelRow>
                   <div>
-                  Not sure which grid type? <a href="https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/detail/embl-grid.html" target="_blank">See the docs</a>.
+                  Not sure which grid type to use? <a href="https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/detail/embl-grid.html" target="_blank">See the docs</a>.
                   <SelectControl
                       key="grid-type"
                       label={ __( 'Grid Type' ) }

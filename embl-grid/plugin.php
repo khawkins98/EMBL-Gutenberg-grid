@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: embl-grid — CGB Gutenberg Block Plugin
- * Plugin URI: https://github.com/ahmadawais/create-guten-block/
- * Description: embl-grid — is a Gutenberg plugin created via create-guten-block.
- * Author: mrahmadawais, maedahbatool
- * Author URI: https://AhmadAwais.com/
- * Version: 1.0.0
+ * Plugin Name: EMBL Grid for Gutenberg
+ * Plugin URI: https://github.com/khawkins98/EMBL-Gutenberg-grid/tree/master/embl-grid
+ * Description: A simple Gutenberg plugin to implement the EMBL Grid for the Visual Framework 2.0
+ * Author: khawkins98,
+ * Author URI: https://www.ebi.ac.uk/about/people/ken-hawkins
+ * Version: 0.0.1
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  *

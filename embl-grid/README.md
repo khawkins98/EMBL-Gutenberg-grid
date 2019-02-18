@@ -1,8 +1,17 @@
-This project was bootstrapped with [Create Guten Block](https://github.com/ahmadawais/create-guten-block).
+# embl-grid for WordPress
 
-Below you will find some information on how to run scripts.
+A simple Gutenberg plugin to implement the [EMBL Grid for the Visual Framework 2.0](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/detail/embl-grid.html).
 
->You can find the most recent version of this guide [here](https://github.com/ahmadawais/create-guten-block).
+## How?
+
+This adds a block to Gutenberg that allows you to:
+
+- specify which EMBL Grid variant to use
+- inside this block, child block can be added
+
+## Developing this plugin
+
+Bootstrapped with [Create Guten Block](https://github.com/ahmadawais/create-guten-block); below you will find some information on how to run scripts.
 
 ## 👉  `npm start`
 - Use to compile and run the block in development mode.

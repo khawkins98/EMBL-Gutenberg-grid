@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: vf-wp-column — CGB Gutenberg Block Plugin
- * Plugin URI: https://github.com/ahmadawais/create-guten-block/
- * Description: vf-wp-column — is a Gutenberg plugin created via create-guten-block.
- * Author: mrahmadawais, maedahbatool
- * Author URI: https://AhmadAwais.com/
- * Version: 1.0.0
+ * Plugin Name: Visual Framework Columns containers for Gutenberg
+ * Plugin URI: https://github.com/khawkins98/EMBL-Gutenberg-grid/tree/master/vf-wp-columns
+ * Description: A simple Gutenberg plugin to implement "columns", designed for use with the `embl-grid` plugin.
+ * Author: khawkins98,
+ * Author URI: https://www.ebi.ac.uk/about/people/ken-hawkins
+ * Version: 0.0.1
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  *
